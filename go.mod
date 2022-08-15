@@ -1,4 +1,4 @@
-module github.com/jqshuv/InnoSetupActionExample/ExampleApp
+module github.com/jqshuv/example-go-app
 
 go 1.19
 
