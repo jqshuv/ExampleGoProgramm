@@ -11,11 +11,41 @@ This is an example program written in Go. This only opens a simple dialog box wi
 To get started you need the Go programming language. You can get it [here](https://go.dev). After installing it you can simply follow the next steps.
 
 ## Build
+This is how you build the app.
+
+### Windows
 This is an example build command which uses custom flags to hide the console on Windows.
 
 ```bash 
 go build -ldflags -H=windowsgui -o example.exe main.go
 ```
 
+### Linux
+This is an example build command for Linux.
+
+```bash 
+go build -o example main.go
+```
+
+### Docker
+This is an example build command for Docker.
+
+```bash
+docker build -t ghcr.io/jqshuv/example-go-app .
+```
+
 ## Run
+This is how you run the app.
+
+### Windows
 Simply run the made executable called: `example.exe`.
+
+### Linux
+Simply run the made executable called: `example`.
+
+### Docker
+Run the app in a Docker container.
+
+```bash
+docker run ghcr.io/jqshuv/example-go-app
+```
