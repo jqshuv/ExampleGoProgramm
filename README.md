@@ -17,14 +17,14 @@ This is how you build the app.
 This is an example build command which uses custom flags to hide the console on Windows.
 
 ```bash 
-go build -ldflags -H=windowsgui -o example.exe main.go
+go build -ldflags -H=windowsgui -o example-go-app.exe main.go
 ```
 
 ### Linux
 This is an example build command for Linux.
 
 ```bash 
-go build -o example main.go
+go build -o example-go-app main.go
 ```
 
 ### Docker
@@ -38,10 +38,10 @@ docker build -t ghcr.io/jqshuv/example-go-app .
 This is how you run the app.
 
 ### Windows
-Simply run the made executable called: `example.exe`.
+Simply run the made executable called: `example-go-app.exe`.
 
 ### Linux
-Simply run the made executable called: `example`.
+Simply run the made executable called: `example-go-app`.
 
 ### Docker
 Run the app in a Docker container.

@@ -1,0 +1,53 @@
+name: CI/CD
+
+on:
+  schedule:
+    - cron: '43 20 * * *'
+  push:
+    branches: [ "master" ]
+    tags: [ 'v*.*.*' ]
+  pull_request:
+    branches: [ "master" ]
+
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: '1.19'
+
+      - name: Cache Go Modules
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.cache/go-build
+            ~/go/pkg/mod
+          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          restore-keys: |
+            ${{ runner.os }}-go-
+
+      - name: Install Go Modules
+        run: go mod download && go mod verify
+
+      - name: Build
+        run: |
+          go build -o build/example-go-app main.go
+          GOOS=windows go build -o build/example-go-app.exe main.go
+
+      - name: Upload
+        uses: actions/upload-artifact@v3
+        with:
+          name: example-go-app-${{ runner.os }}
+          path: build/*
