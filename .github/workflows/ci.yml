@@ -45,7 +45,6 @@ jobs:
         run: |
           GOOS=linux go build -o build/example-go-app main.go
           GOOS=windows go build -ldflags -H=windowsgui -o build/example-go-app.exe main.go
-          GOOS=darwin go build -o build/example-go-app-mac main.go
 
       - name: Upload
         uses: actions/upload-artifact@v3
