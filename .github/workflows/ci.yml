@@ -119,7 +119,6 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v1
         with:
-          body_path: Testing
           files: |
             build/example-go-app
             build/example-go-app.exe
